@@ -14,20 +14,29 @@ def calculadora():
         operacoes = [adicao, lambda x, y: x - y, lambda x, y: x * y, lambda x, y: x / y]
         operacao_selecionada = operacoes[opcao]
 
-        num1 = float(input("Digite o primeiro número: "))
-        num2 = float(input("Digite o segundo número: "))
+        num1 = input("Digite o primeiro número: ")
+        if not num1.isdigit():
+            print("Valor inválido! Digite um número.")
+            return "Valor inválido! Digite um número."
 
-        resultado_monad = Monad((num1, num2)).bind(lambda nums: operacao(operacao_selecionada, nums[0], nums[1]))
+        num2 = input("Digite o segundo número: ")
+        if not num2.isdigit():
+            print("Valor inválido! Digite um número.")
+            return "Valor inválido! Digite um número."
+
+        resultado_monad = Monad((float(num1), float(num2))).bind(lambda nums: operacao(operacao_selecionada, nums[0], nums[1]))
 
         imprimir_resultado(resultado_monad.get_value())
 
         if not outra_operacao():
             break
 
+    return resultado_monad.get_value()
+
 
 # List comprehension para criar menu
 def criar_menu():
-    return [f"{i+1}: {op}" for i, op in enumerate(["Soma", "Subtração", "Multiplicação", "Divisão"])]
+    return [f"{i}: {op}" for i, op in enumerate(["Soma", "Subtração", "Multiplicação", "Divisão"])]
 
 
 # Função para perguntar se deseja fazer outra operação
