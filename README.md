@@ -5,7 +5,7 @@
 - Lucas Gomes Andrade - 2116273
 - Leonardo Alex Evaristo Chacon - 2213835
 - Gisele Da Costa Soares - 2213825
-- Lucas Aguiar - 
+- Lucas Aguiar Marques - 2124701
 
 
 ![img.png](img/img.png)
